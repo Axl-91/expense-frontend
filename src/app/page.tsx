@@ -1,15 +1,14 @@
 import Link from "next/link";
+import ExpenseLogo from "./ui/expenseLogo";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col p-6">
-      <div className="flex flex-col justify-end rounded-2xl bg-gradient-to-r from-indigo-600 to-blue-800 p-6 md:h-52 shadow-lg border border-blue-700">
-        <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight drop-shadow-md">
-          Expense App
-        </h1>
+      <div className="flex flex-col justify-end rounded-2xl bg-gradient-to-r from-indigo-600 to-blue-800 p-6 md:h-40 shadow-lg border border-blue-700">
+        <ExpenseLogo />
       </div>
 
-      <div className="mt-8 flex grow flex-col gap-4 md:flex-row justify-center">
+      <div className="mt-5 flex grow gap-4 justify-center">
         <div className="flex flex-col justify-center items-center gap-6 w-full bg-gray-800 rounded-2xl shadow-xl border border-gray-700 text-center">
 
           <div className="relative w-0 h-0 border-l-[15px] border-r-[15px] border-b-[26px] border-l-transparent border-r-transparent border-b-indigo-500" />
