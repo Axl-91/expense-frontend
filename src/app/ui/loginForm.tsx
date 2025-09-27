@@ -2,22 +2,37 @@
 
 import {
   AtSymbolIcon,
+  ExclamationCircleIcon,
   KeyIcon,
 } from '@heroicons/react/24/outline';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import { } from 'next/router';
+import { useActionState } from 'react';
+import { handleLogin } from '../../../lib/actions/auth';
 
 export default function LoginForm() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
-  const logIn = () => { }
+  const [errorMessage, formAction, isPending] = useActionState(
+    handleLogin,
+    undefined
+  )
 
   return (
-    <form action={logIn} className="space-y-3">
-      <div className="flex-1 bg-gray-800 rounded-2xl shadow-xl border border-gray-700 px-6 pb-4 pt-8">
+    <form action={formAction} className="space-y-3">
+      < div className="flex-1 bg-gray-800 rounded-2xl shadow-xl border border-gray-700 px-6 pb-4 pt-8" >
         <h1 className={`mb-3 text-2xl`}>
           Login
         </h1>
+        {errorMessage && (
+          <div className="flex justify-center mt-4">
+            <div className="flex items-center justify-center gap-2 rounded-lg border border-red-300 bg-red-100 py-2 w-full max-w-sm">
+              <ExclamationCircleIcon className="h-6 w-6 text-red-600" />
+              <p className="text-sm font-medium text-red-700">{errorMessage.error}</p>
+            </div>
+          </div>
+        )}
         <div className="w-full">
           <div>
             <label
@@ -59,9 +74,11 @@ export default function LoginForm() {
             </div>
           </div>
         </div>
+
+        <input type="hidden" name="redirectTo" value={callbackUrl} />
         <button
-          type="submit"
           className="w-full rounded-lg bg-indigo-600 py-3 text-lg font-semibold text-white hover:bg-indigo-700 transition cursor-pointer"
+          aria-disabled={isPending}
         >
           Log in
         </button>
@@ -73,7 +90,8 @@ export default function LoginForm() {
           Back
         </Link>
 
-      </div>
+
+      </div >
     </form >
   );
 }
