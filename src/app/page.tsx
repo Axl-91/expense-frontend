@@ -20,13 +20,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <Link
               href="/login"
-              className="px-6 py-3 rounded-lg bg-indigo-600 text-white font-semibold text-lg hover:bg-indigo-700 hover:shadow-xl transition"
+              className="root-button rounded-lg bg-indigo-600 text-white hover:bg-indigo-700"
             >
               Login
             </Link>
             <Link
               href="/signup"
-              className="px-6 py-3 rounded-lg border border-gray-300 text-gray-100 font-semibold text-lg hover:bg-gray-600 hover:shadow-xl transition"
+              className="root-button border border-gray-300 text-gray-100 hover:bg-gray-600"
             >
               Sign Up
             </Link>

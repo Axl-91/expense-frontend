@@ -22,3 +22,7 @@ body {
   -webkit-text-stroke: 1px indigo;
   color: white;
 }
+
+@utility root-button {
+  @apply px-6 py-3 rounded-lg font-semibold text-lg hover:shadow-xl transition duration-500 ease-in-out hover:-translate-y-2
+}
