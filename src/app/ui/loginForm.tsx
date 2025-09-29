@@ -1,35 +1,47 @@
 'use client';
 
+import { handleLogin } from '@/lib/actions/auth';
 import {
   AtSymbolIcon,
   ExclamationCircleIcon,
   KeyIcon,
 } from '@heroicons/react/24/outline';
-import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { } from 'next/router';
-import { useActionState } from 'react';
-import { handleLogin } from '../../../lib/actions/auth';
+import { useRouter } from 'next/navigation';
+import { FormEvent, useState } from 'react';
 
 export default function LoginForm() {
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
-  const [errorMessage, formAction, isPending] = useActionState(
-    handleLogin,
-    undefined
-  )
+  const [loginError, setLoginError] = useState<string | null>(null);
+  const [isPending, setIsPending] = useState(false);
+  const router = useRouter();
+
+  const submitLogin = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsPending(true);
+
+    const formData = new FormData(e.currentTarget);
+
+    const errLogin = await handleLogin(formData)
+
+    if (errLogin) {
+      setLoginError(errLogin);
+      setIsPending(false);
+      return;
+    }
+    router.push('/dashboard')
+  }
 
   return (
-    <form action={formAction} className="space-y-3">
+    <form onSubmit={submitLogin} className="space-y-3">
       < div className="flex-1 bg-gray-800 rounded-2xl shadow-xl border border-gray-700 px-6 pb-4 pt-8" >
         <h1 className={`mb-3 text-2xl`}>
           Login
         </h1>
-        {errorMessage && (
+        {loginError && (
           <div className="flex justify-center mt-4">
             <div className="flex items-center justify-center gap-2 rounded-lg border border-red-300 bg-red-100 py-2 w-full max-w-sm">
               <ExclamationCircleIcon className="h-6 w-6 text-red-600" />
-              <p className="text-sm font-medium text-red-700">{errorMessage.error}</p>
+              <p className="text-sm font-medium text-red-700">{loginError}</p>
             </div>
           </div>
         )}
@@ -75,8 +87,8 @@ export default function LoginForm() {
           </div>
         </div>
 
-        <input type="hidden" name="redirectTo" value={callbackUrl} />
         <button
+          type='submit'
           className="w-full rounded-lg bg-indigo-600 py-3 text-lg font-semibold text-white hover:bg-indigo-700 transition cursor-pointer"
           aria-disabled={isPending}
         >
