@@ -10,7 +10,7 @@ export default function Home() {
 
       <div className="mt-5 flex grow gap-4 justify-center">
         <div className="flex flex-col justify-center items-center gap-6 w-full bg-gray-700 rounded-2xl shadow-xl border border-gray-800 text-center">
-          <div className="relative w-0 h-0 border-l-[15px] border-r-[15px] border-b-[26px] border-l-transparent border-r-transparent border-b-indigo-500 hover:border-b-indigo-600 hover:shadow-2xl transition" />
+          <div className="relative w-0 h-0 border-l-[15px] border-r-[15px] border-b-[26px] border-l-transparent border-r-transparent border-b-indigo-500  hover:shadow-2xl transition ease-in-out hover:animate-pulse" />
           <p className="text-xl md:text-3xl md:leading-relaxed text-gray-100">
             <strong className="text-white text-3xl md:text-4xl">Welcome to Expense App</strong>
             <br />
