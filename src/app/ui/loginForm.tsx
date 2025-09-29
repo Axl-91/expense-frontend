@@ -15,21 +15,21 @@ export default function LoginForm() {
   const [isPending, setIsPending] = useState(false);
   const router = useRouter();
 
-  const submitLogin = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsPending(true);
+  const submitLogin =
+    async (formEvent: FormEvent<HTMLFormElement>) => {
+      formEvent.preventDefault();
+      setIsPending(true);
 
-    const formData = new FormData(e.currentTarget);
+      const formData = new FormData(formEvent.currentTarget);
+      const errLogin = await handleLogin(formData)
 
-    const errLogin = await handleLogin(formData)
-
-    if (errLogin) {
-      setLoginError(errLogin);
-      setIsPending(false);
-      return;
+      if (errLogin) {
+        setLoginError(errLogin);
+        setIsPending(false);
+        return;
+      }
+      router.push('/dashboard')
     }
-    router.push('/dashboard')
-  }
 
   return (
     <form onSubmit={submitLogin} className="space-y-3">
