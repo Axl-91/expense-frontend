@@ -16,15 +16,23 @@ export async function loginUser(email: string, password: string) {
   return response.data
 }
 
+export async function getUser() {
+  const response =
+    await axios.get(
+      'http://localhost:4000/user',
+      { withCredentials: true }
+    )
+  return response.data
+}
+
 export async function logoutUser() {
   const response =
     await axios.post(
       'http://localhost:4000/user/logout',
       {},
-      {
-        withCredentials: true,
-      }
+      { withCredentials: true }
     )
 
   return response.data
 }
+
