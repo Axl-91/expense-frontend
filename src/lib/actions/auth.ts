@@ -1,5 +1,5 @@
 import axios from "axios";
-import { loginUser } from "../dal/users";
+import { loginUser, logoutUser } from "../dal/users";
 
 export async function handleLogin(formData: FormData) {
   const email = formData.get('email') as string;
@@ -11,6 +11,19 @@ export async function handleLogin(formData: FormData) {
     if (response.error) {
       return 'Invalid credentials'
     }
+  } catch (err) {
+    if (axios.isAxiosError(err)) {
+      if (err.response) {
+        return `${err.response.data.message}`
+      }
+      return 'Unknown error'
+    }
+  }
+}
+
+export async function handleLogout() {
+  try {
+    await logoutUser()
   } catch (err) {
     if (axios.isAxiosError(err)) {
       if (err.response) {
