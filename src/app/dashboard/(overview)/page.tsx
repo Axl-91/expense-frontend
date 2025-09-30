@@ -16,7 +16,7 @@ function DashboardPage() {
       setUser(user)
     }
     fetchUser();
-  })
+  }, [])
 
   return (
     <div className=" p-4 bg-gray-50 border-3 border-gray-400 rounded-md text-black">
