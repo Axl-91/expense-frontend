@@ -1,5 +1,5 @@
 import ExpenseLogo from "../ui/expenseLogo";
-import LoginForm from "../ui/loginForm";
+import UserForm from "../ui/userForm";
 
 function LoginPage() {
   return (
@@ -10,7 +10,7 @@ function LoginPage() {
             <ExpenseLogo />
           </div>
         </div>
-        <LoginForm />
+        <UserForm />
       </div>
     </main>
   )
