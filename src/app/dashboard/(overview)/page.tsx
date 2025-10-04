@@ -19,24 +19,27 @@ function DashboardPage() {
   }, [])
 
   return (
-    <div className=" p-4 bg-gray-50 border-3 border-gray-400 rounded-md text-black">
+    <div className="p-6 bg-white/5 border border-slate-700 rounded-xl shadow-md text-gray-100 h-full">
       {user ? (
         <>
-          <div className="">
-            <h1 className=" text-xl md:text-2xl font-bold border-b-2 border-gray-400">
-              Welcome to your dashboard, {user.username}
+          <header className="mb-6">
+            <h1 className="text-2xl font-semibold tracking-tight border-b border-slate-700 pb-2">
+              Welcome back, <span className="text-indigo-400">{user.username}</span>
             </h1>
-          </div>
-          <div>
-            <h2 className="text-xl font-bold"> Reports:</h2>
-          </div>
+          </header>
+
+          <section>
+            <h2 className="text-lg font-medium mb-3 text-indigo-300">Reports</h2>
+            <p> This is where I should recollect data from reports of the users and show it </p>
+          </section>
         </>
       ) : (
-        <h1 className=" text-xl md:text-2xl font-bold border-b-2 border-gray-400">
+        <h1 className="text-2xl font-semibold tracking-tight border-b border-slate-700 pb-2">
           Loading your dashboard...
         </h1>
       )}
     </div>
+
   )
 }
 

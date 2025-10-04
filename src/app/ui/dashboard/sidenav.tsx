@@ -19,29 +19,33 @@ export default function SideNav() {
       await handleLogout();
       router.push('/')
     }
-
-
   return (
-    <div className="flex h-full flex-col bg-gray-50 border-r-3 border-gray-400 px-3 py-4 md:px-2">
+    <div className="flex h-full flex-col  bg-white/5 border border-slate-700 px-3 py-4 md:px-2 shadow-inner">
       <Link
-        className="mb-2 flex items-center justify-start h-20 border-3 border-indigo-800 rounded-md bg-indigo-600 hover:bg-indigo-700 p-2"
         href="/dashboard"
+        className="mb-3 flex items-center justify-start h-20 rounded-lg bg-indigo-600 hover:bg-indigo-700 transition-colors duration-200 p-2 shadow-sm border border-indigo-700"
       >
-        < ExpenseLogo />
+        <ExpenseLogo />
       </Link>
-      <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-1">
+
+      <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
         <NavLinks />
-        <div className="hidden h-auto w-full grow rounded-md md:block"></div>
+        <div className="hidden h-auto w-full grow md:block" />
         <form onSubmit={submitLogout}>
           <button
             type="submit"
-            className="flex h-[48px] w-full grow border-2 border-gray-400 items-center justify-center gap-2 rounded-md bg-gray-200 text-black p-3 text-sm font-medium hover:bg-sky-100 hover:text-indigo-600 md:flex-none md:justify-start md:p-2 md:px-3 cursor-pointer">
-            <PowerIcon className="w-6" />
-            Sign Out
+            className="flex h-[44px] w-full items-center gap-3 rounded-lg border border-red-500/30 bg-red-500/10 text-red-300 font-medium 
+             hover:bg-red-500/20 hover:border-red-500/50 hover:text-red-200 
+             transition-all duration-150 shadow-sm md:justify-start md:px-4 cursor-pointer"
+          >
+            <PowerIcon className="w-5 h-5" />
+            <span className="hidden md:block">Sign Out</span>
           </button>
+
         </form>
       </div>
     </div>
-  );
+  )
+
 }
 

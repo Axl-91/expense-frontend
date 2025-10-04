@@ -12,7 +12,7 @@ const links = [
   { name: 'Home', href: '/dashboard', icon: HomeIcon },
   {
     name: 'Reports',
-    href: '/reports',
+    href: '/dashboard/reports',
     icon: DocumentDuplicateIcon,
   }
 ];
@@ -23,23 +23,27 @@ export default function NavLinks() {
     <>
       {links.map((link) => {
         const LinkIcon = link.icon;
+        const isActive = pathname === link.href;
+
         return (
           <Link
             key={link.name}
             href={link.href}
             className={clsx(
-              'flex h-[48px] grow items-center justify-center rounded-md bg-gray-100 p-3 text-indigo-800 text-sm font-medium hover:bg-indigo-100 hover:text-indigo-600 md:flex-none md:justify-start md:p-2 md:px-3',
-              {
-                'bg-indigo-200 text-indigo-600': pathname === link.href,
-              },
+              'flex h-[44px] items-center gap-3 rounded-lg px-3 text-sm font-medium transition-all duration-150',
+              'md:justify-start md:px-4',
+              isActive
+                ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 shadow-sm'
+                : 'text-slate-300 hover:bg-slate-700/40 hover:text-indigo-200'
             )}
           >
-            <LinkIcon className="w-6" />
-            <p className="hidden md:block">{link.name}</p>
+            <LinkIcon className={clsx('w-5 h-5', isActive && 'text-indigo-400')} />
+            <span className="hidden md:block truncate">{link.name}</span>
           </Link>
         );
       })}
     </>
+
   );
 }
 
