@@ -8,7 +8,13 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-const links = [
+type NavLink = {
+  name: string,
+  href: string,
+  icon: typeof HomeIcon;
+}
+
+const links: NavLink[] = [
   { name: 'Home', href: '/dashboard', icon: HomeIcon },
   {
     name: 'Reports',
@@ -43,7 +49,6 @@ export default function NavLinks() {
         );
       })}
     </>
-
   );
 }
 

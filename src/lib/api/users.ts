@@ -1,5 +1,10 @@
 import axios from "axios"
 
+export type User = {
+  id: string,
+  username: string
+}
+
 export async function signupUser(username: string, email: string, password: string) {
   const body = { username, email, password }
   const response =

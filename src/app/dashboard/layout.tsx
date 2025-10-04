@@ -12,10 +12,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <SideNav />
       </aside>
 
-      <main className="flex flex-col flex-grow overflow-y-auto p-6 md:p-8 bg-slate-900/60 backdrop-blur-sm">
-        {children}
+      <main className="flex flex-col flex-1 min-h-0 overflow-hidden p-6 md:p-8 bg-slate-900/60 backdrop-blur-sm">
+        <div className="flex-1 min-h-[30vh] overflow-y-auto p-6 bg-white/5 border border-slate-700 rounded-xl shadow-md text-gray-100">
+          {children}
+        </div>
       </main>
     </div>
   );
 }
-

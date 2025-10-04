@@ -1,11 +1,7 @@
 'use client'
 
-import { getUser } from "@/lib/dal/users";
+import { getUser, User } from "@/lib/api/users";
 import { useEffect, useState } from "react";
-
-type User = {
-  username: string
-}
 
 function DashboardPage() {
   const [user, setUser] = useState<User | null>(null)
@@ -19,7 +15,7 @@ function DashboardPage() {
   }, [])
 
   return (
-    <div className="p-6 bg-white/5 border border-slate-700 rounded-xl shadow-md text-gray-100 h-full">
+    <>
       {user ? (
         <>
           <header className="mb-6">
@@ -38,7 +34,7 @@ function DashboardPage() {
           Loading your dashboard...
         </h1>
       )}
-    </div>
+    </>
 
   )
 }
