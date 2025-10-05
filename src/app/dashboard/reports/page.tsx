@@ -1,6 +1,11 @@
 import { fetchReportsForUser, type Report } from '@/lib/api/reports'
+import { Metadata } from 'next';
 
-async function ReportsPage() {
+export const metadata: Metadata = {
+  title: 'Reports'
+};
+
+export default async function ReportsPage() {
   const reports: Report[] = await fetchReportsForUser()
 
   const incomes = reports.filter((r) => r.type === "income");
@@ -29,7 +34,7 @@ async function ReportsPage() {
         <section className="overflow-y-auto max-h-[65vh] rounded-lg border border-slate-700">
           <table className="min-w-full border-collapse border border-slate-700 rounded-lg shadow-inner">
             <thead>
-              <tr className="bg-slate-800/50 text-gray-200 text-left">
+              <tr className="bg-slate-900/50 text-gray-200 text-left">
                 <th className="px-4 py-3 border-b border-slate-700">Source</th>
                 <th className="px-4 py-3 border-b border-slate-700">Amount</th>
                 <th className="px-4 py-3 border-b border-slate-700">Type</th>
@@ -39,7 +44,7 @@ async function ReportsPage() {
               {reports.map((report) => (
                 <tr
                   key={report.id}
-                  className="hover:bg-slate-500/40 transition-colors"
+                  className="hover:bg-slate-700/40 duration-300 ease-in-out"
                 >
                   <td className="px-4 py-2 border-b border-slate-700">
                     {report.source}
@@ -100,6 +105,3 @@ async function ReportsPage() {
     </>
   )
 }
-
-export default ReportsPage;
-

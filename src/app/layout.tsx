@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Expense App",
+  title: {
+    template: "%s | Expense App",
+    default: "Expense App"
+  },
   description: "Your app for expenses",
 };
 
