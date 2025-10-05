@@ -1,3 +1,5 @@
+'use client'
+
 import axios from "axios"
 
 export type User = {
@@ -30,15 +32,6 @@ export async function loginUser(email: string, password: string) {
           'Content-Type': 'application/json'
         }
       }
-    )
-  return response.data
-}
-
-export async function getUser() {
-  const response =
-    await axios.get(
-      'http://localhost:4000/user',
-      { withCredentials: true }
     )
   return response.data
 }

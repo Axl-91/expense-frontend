@@ -1,5 +1,5 @@
 import axios from "axios";
-import { loginUser, logoutUser, signupUser } from "../api/users";
+import { loginUser, logoutUser, signupUser } from "../api/users.client";
 
 export async function handleSignup(formData: FormData) {
   const username = formData.get('username') as string;
